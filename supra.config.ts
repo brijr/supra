@@ -1,4 +1,4 @@
-import { Home, Settings, Users, LineChart } from "lucide-react";
+import { Home, Settings, Users, LineChart, CircleUser } from "lucide-react";
 import { LucideIcon } from "lucide-react";
 
 type SupraConfig = {
@@ -10,6 +10,14 @@ type SupraConfig = {
     icon: LucideIcon;
     badge?: number;
   }[];
+  userMenu: {
+    label: string;
+    items: {
+      label: string;
+      href?: string;
+      action?: () => void;
+    }[];
+  };
 };
 
 export const supra: SupraConfig = {
@@ -21,4 +29,12 @@ export const supra: SupraConfig = {
     { href: "/users", label: "Users", icon: Users },
     { href: "/analytics", label: "Analytics", icon: LineChart },
   ],
+  userMenu: {
+    label: "My Account",
+    items: [
+      { label: "Settings", href: "/settings" },
+      { label: "Support", href: "/support" },
+      { label: "Logout", action: () => console.log("Logout") },
+    ],
+  },
 };
