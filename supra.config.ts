@@ -34,7 +34,6 @@ export const supra: SupraConfig = {
     items: [
       { label: "Settings", href: "/settings" },
       { label: "Support", href: "/support" },
-      { label: "Logout", action: () => console.log("Logout") },
     ],
   },
 };

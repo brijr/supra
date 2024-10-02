@@ -6,6 +6,18 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { createClient } from "@/utils/supabase/server";
 
+import { supra } from "@/supra.config";
+import { CircleUser } from "lucide-react";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 export default async function AuthButton() {
   const {
     data: { user },
@@ -49,13 +61,40 @@ export default async function AuthButton() {
   }
 
   return user ? (
-    <div className="flex items-center gap-4">
-      <p className="text-sm">Hey, {user.email}!</p>
+    <div className="flex items-center gap-2">
       <form action={signOutAction}>
         <Button type="submit" variant={"outline"}>
           Sign out
         </Button>
       </form>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" size="icon">
+            <CircleUser className="h-5 w-5" />
+            <span className="sr-only">Toggle user menu</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuLabel>{supra.userMenu.label}</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          {supra.userMenu.items.map((item, index) => (
+            <>
+              {item.href ? (
+                <DropdownMenuItem asChild>
+                  <Link href={item.href}>{item.label}</Link>
+                </DropdownMenuItem>
+              ) : (
+                <DropdownMenuItem onSelect={item.action}>
+                  {item.label}
+                </DropdownMenuItem>
+              )}
+              {index < supra.userMenu.items.length - 1 && (
+                <DropdownMenuSeparator />
+              )}
+            </>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   ) : (
     <div className="flex gap-2">

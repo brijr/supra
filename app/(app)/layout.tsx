@@ -1,7 +1,7 @@
 import Link from "next/link";
+import HeaderAuth from "@/components/header-auth";
 import { supra } from "@/supra.config";
 import { Bell, CircleUser, Menu, Search } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,18 +10,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { AppNav } from "@/components/app-nav";
-import React from "react";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -112,33 +103,6 @@ const Header = () => (
         </div>
       </form>
     </div>
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="secondary" size="icon" className="rounded-full">
-          <CircleUser className="h-5 w-5" />
-          <span className="sr-only">Toggle user menu</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuLabel>{supra.userMenu.label}</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        {supra.userMenu.items.map((item, index) => (
-          <React.Fragment key={index}>
-            {item.href ? (
-              <DropdownMenuItem asChild>
-                <Link href={item.href}>{item.label}</Link>
-              </DropdownMenuItem>
-            ) : (
-              <DropdownMenuItem onSelect={item.action}>
-                {item.label}
-              </DropdownMenuItem>
-            )}
-            {index < supra.userMenu.items.length - 1 && (
-              <DropdownMenuSeparator />
-            )}
-          </React.Fragment>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <HeaderAuth />
   </header>
 );
