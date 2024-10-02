@@ -5,6 +5,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { SmtpMessage } from "../smtp-message";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function ForgotPassword({
   searchParams,
@@ -12,27 +21,34 @@ export default function ForgotPassword({
   searchParams: Message;
 }) {
   return (
-    <>
-      <form className="flex-1 flex flex-col w-full gap-2 text-foreground [&>input]:mb-6 min-w-64 max-w-64 mx-auto">
-        <div>
-          <h1 className="text-2xl font-medium">Reset Password</h1>
-          <p className="text-sm text-secondary-foreground">
-            Already have an account?{" "}
-            <Link className="text-primary underline" href="/sign-in">
-              Sign in
-            </Link>
-          </p>
-        </div>
-        <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
+    <Card className="w-full max-w-sm mx-auto">
+      <CardHeader>
+        <CardTitle className="text-2xl">Reset Password</CardTitle>
+        <CardDescription>
+          Already have an account?{" "}
+          <Link className="text-primary underline" href="/sign-in">
+            Sign in
+          </Link>
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="grid gap-4">
+        <div className="grid gap-2">
           <Label htmlFor="email">Email</Label>
-          <Input name="email" placeholder="you@example.com" required />
-          <SubmitButton formAction={forgotPasswordAction}>
-            Reset Password
-          </SubmitButton>
-          <FormMessage message={searchParams} />
+          <Input
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            required
+          />
         </div>
-      </form>
+        <FormMessage message={searchParams} />
+      </CardContent>
+      <CardFooter>
+        <SubmitButton formAction={forgotPasswordAction} className="w-full">
+          Reset Password
+        </SubmitButton>
+      </CardFooter>
       <SmtpMessage />
-    </>
+    </Card>
   );
 }
