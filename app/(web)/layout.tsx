@@ -43,7 +43,10 @@ const Nav = () => {
 const Footer = () => {
   return (
     <footer>
-      <Container>
+      <Container className="flex justify-between items-center gap-4">
+        <p className="text-sm text-muted-foreground">
+          © {new Date().getFullYear()} Next.js Supabase Starter
+        </p>
         <ThemeSwitcher />
       </Container>
     </footer>
