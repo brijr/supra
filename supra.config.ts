@@ -20,6 +20,5 @@ export const supra: SupraConfig = {
     { href: "/admin", label: "Admin", icon: Home },
     { href: "/users", label: "Users", icon: Users },
     { href: "/analytics", label: "Analytics", icon: LineChart },
-    { href: "/settings", label: "Settings", icon: Settings },
   ],
 };
