@@ -1,4 +1,4 @@
-import { Home, ShoppingCart, Package, Users, LineChart } from "lucide-react";
+import { Home, Settings, Users, LineChart } from "lucide-react";
 import { LucideIcon } from "lucide-react";
 
 type SupraConfig = {
@@ -17,8 +17,9 @@ export const supra: SupraConfig = {
   description:
     "Build webapps with Supabase, Next.js, Stripe, shadcn/ui, and brijr/craft",
   navLinks: [
-    { href: "/", label: "Admin", icon: Home },
+    { href: "/admin", label: "Admin", icon: Home },
     { href: "/users", label: "Users", icon: Users },
     { href: "/analytics", label: "Analytics", icon: LineChart },
+    { href: "/settings", label: "Settings", icon: Settings },
   ],
 };

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { supra } from "@/supra.config";
 import { Bell, CircleUser, Menu, Package2, Search } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -19,7 +20,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import Nav from "../../components/app-nav"; // Import the new Nav component
+import { AppNav } from "@/components/app-nav";
 
 export const description =
   "A products dashboard with a sidebar navigation and a main content area. The dashboard has a header with a search input and a user menu. The sidebar has a logo, navigation links, and a card with a call to action. The main content area shows an empty state with a call to action.";
@@ -31,8 +32,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <Link href="/" className="flex items-center gap-2 font-semibold">
-              <Package2 className="h-6 w-6" />
-              <span className="">Acme Inc</span>
+              {supra.name}
             </Link>
             <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
               <Bell className="h-4 w-4" />
@@ -40,7 +40,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             </Button>
           </div>
           <div className="flex-1">
-            <Nav /> {/* Use the new Nav component */}
+            <AppNav />
           </div>
           <div className="mt-auto p-4">
             <Card x-chunk="dashboard-02-chunk-0">
@@ -74,7 +74,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
-              <Nav /> {/* Use the new Nav component */}
+              <AppNav />
               <div className="mt-auto">
                 <Card>
                   <CardHeader>
