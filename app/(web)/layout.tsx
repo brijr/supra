@@ -2,7 +2,7 @@ import { EnvVarWarning } from "@/components/env-var-warning";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 
-import { Main, Section, Container } from "@/components/craft";
+import { Container } from "@/components/craft";
 
 import HeaderAuth from "@/components/header-auth";
 import Link from "next/link";
@@ -19,11 +19,11 @@ export const metadata = {
 
 export default function WebLayout({ children }: { children: React.ReactNode }) {
   return (
-    <Main>
+    <>
       <Nav />
       {children}
       <Footer />
-    </Main>
+    </>
   );
 }
 
@@ -31,7 +31,9 @@ const Nav = () => {
   return (
     <nav>
       <Container className="flex justify-between items-center gap-4">
-        <Link href={"/"}>Next.js Supabase Starter</Link>
+        <Link className="hover:text-muted-foreground transition-all" href={"/"}>
+          Next.js Supabase Starter
+        </Link>
         {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
       </Container>
     </nav>
