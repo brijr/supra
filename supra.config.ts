@@ -17,10 +17,8 @@ export const supra: SupraConfig = {
   description:
     "Build webapps with Supabase, Next.js, Stripe, shadcn/ui, and brijr/craft",
   navLinks: [
-    { href: "#", label: "Dashboard", icon: Home },
-    { href: "#", label: "Orders", icon: ShoppingCart, badge: 6 },
-    { href: "#", label: "Products", icon: Package },
-    { href: "#", label: "Customers", icon: Users },
-    { href: "#", label: "Analytics", icon: LineChart },
+    { href: "/", label: "Admin", icon: Home },
+    { href: "/users", label: "Users", icon: Users },
+    { href: "/analytics", label: "Analytics", icon: LineChart },
   ],
 };
