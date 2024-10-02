@@ -1,6 +1,7 @@
 import { EnvVarWarning } from "@/components/env-var-warning";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { hasEnvVars } from "@/utils/supabase/check-env-vars";
+import { supra } from "@/supra.config";
 
 import { Container } from "@/components/craft";
 
@@ -13,8 +14,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: supra.name,
+  description: supra.description,
 };
 
 export default function WebLayout({ children }: { children: React.ReactNode }) {
@@ -32,7 +33,7 @@ const Nav = () => {
     <nav>
       <Container className="flex justify-between items-center gap-4">
         <Link className="hover:text-muted-foreground transition-all" href={"/"}>
-          Next.js Supabase Starter
+          {supra.name}
         </Link>
         {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
       </Container>
@@ -45,7 +46,7 @@ const Footer = () => {
     <footer>
       <Container className="flex justify-between items-center gap-4">
         <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Next.js Supabase Starter
+          © {new Date().getFullYear()} {supra.name}
         </p>
         <ThemeSwitcher />
       </Container>
