@@ -5,7 +5,7 @@ import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { createClient } from "@/utils/supabase/server";
-
+import { Fragment } from "react";
 import { supra } from "@/supra.config";
 import { CircleUser } from "lucide-react";
 
@@ -78,7 +78,7 @@ export default async function AuthButton() {
           <DropdownMenuLabel>{supra.userMenu.label}</DropdownMenuLabel>
           <DropdownMenuSeparator />
           {supra.userMenu.items.map((item, index) => (
-            <>
+            <Fragment key={index}>
               {item.href ? (
                 <DropdownMenuItem asChild>
                   <Link href={item.href}>{item.label}</Link>
@@ -91,7 +91,7 @@ export default async function AuthButton() {
               {index < supra.userMenu.items.length - 1 && (
                 <DropdownMenuSeparator />
               )}
-            </>
+            </Fragment>
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
